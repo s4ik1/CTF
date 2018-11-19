@@ -1,0 +1,15 @@
+socat TCP-LISTEN:21211,reuseaddr,fork exec:
+
+objdump -M intel -d a.out | grep '^ ' | cut -f2 | perl -pe 's/(\w{2})\s+/\\x\1/g'
+
+sudo sysctl -w kernel.randomize_va_space=0
+
+gcc -fno-stack-protector -z execstack 
+
+gdbserver 127.0.0.1:11121
+
+nm -D /lib/i386-linux-gnu/libc.so.6 | grep " system"
+
+readelf -s /lib/i386-linux-gnu/libc.so.6 | grep " system"
+
+strings -a -tx /lib/i386-linux-gnu/libc.so.6 | grep "sh$"
