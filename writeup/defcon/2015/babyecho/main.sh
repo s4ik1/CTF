@@ -1,0 +1,1 @@
+gdbserver 127.0.0.1:11121 ./babyecho_eb11fdf6e40236b1a37b7974c53b6c3d

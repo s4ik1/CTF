@@ -1,0 +1,1 @@
+gdbserver 127.0.0.1:11121 ./ropasaurusrex
